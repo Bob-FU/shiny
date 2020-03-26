@@ -9,7 +9,7 @@ RUN apt-get update && apt-get install -y \
     libcairo2-dev \
     libxt-dev \
     xtail \
-    wget
+    wget libxml2-dev r-base libcurl4-openssl-dev libssl-dev 
 
 
 # Download and install shiny server
@@ -20,6 +20,22 @@ RUN wget --no-verbose https://download3.rstudio.org/ubuntu-14.04/x86_64/VERSION 
     rm -f version.txt ss-latest.deb && \
     . /etc/environment && \
     R -e "install.packages(c('shiny', 'rmarkdown'), repos='$MRAN')" && \
+    R -e "install.packages('shinydashboard')" &&\
+    R -e "install.packages('data.table')" &&\
+    R -e "install.packages('DT')" &&\
+    R -e "install.packages('ggplot2')" &&\
+    R -e "install.packages('shinycssloaders')" &&\
+    R -e "install.packages('shinydashboardPlus')" &&\
+    R -e "install.packages('shinyWidgets')" &&\
+    R -e "install.packages('leaflet')" &&\
+    R -e "install.packages('rjson')" &&\
+    R -e "install.packages('htmltools')" &&\
+    R -e "install.packages('leaflet.minicharts')" &&\
+    R -e "install.packages('sparkline')" &&\
+    R -e "install.packages('shinyBS')" &&\
+    R -e "install.packages('devtools')" &&\
+    R -e "devtools::install_github('JohnCoene/echarts4r')" &&\
+    R -e "remotes::install_github('JohnCoene/echarts4r.maps')" &&\
     cp -R /usr/local/lib/R/site-library/shiny/examples/* /srv/shiny-server/ && \
     chown shiny:shiny /var/lib/shiny-server
 
