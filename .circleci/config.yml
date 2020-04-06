@@ -1,0 +1,31 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: docker:18.06.0-ce-git
+    steps:
+      - setup_remote_docker:
+          version: 18.06.0-ce
+      - checkout
+      - run:
+          name: Build
+          command: docker build -t ${OWNER}/${IMAGE_NAME}:latest .
+      - run:
+          name: Tag to latest
+          command: docker tag ${OWNER}/${IMAGE_NAME}:latest ${OWNER}/${IMAGE_NAME}:$CIRCLE_SHA1
+      - run:
+          name: Docker Login
+          command: docker login -u ${DOCKER_USER} -p ${DOCKER_PASS}
+      - run:
+          name: Push image to registory
+          command: docker push ${OWNER}/${IMAGE_NAME}
+workflows:
+  version: 2
+  build:
+    jobs:
+      - build:
+          filters:
+            branches:
+              only: master
+            tags:
+              only: /.*/
