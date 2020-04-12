@@ -39,6 +39,7 @@ RUN wget --no-verbose https://download3.rstudio.org/ubuntu-14.04/x86_64/VERSION 
     R -e "install.packages('leaflet.minicharts')" &&\
     R -e "install.packages('sparkline')" &&\
     R -e "install.packages('shinyBS')" &&\
+    R -e "install.packages('forcats')" &&\
     cp -R /usr/local/lib/R/site-library/shiny/examples/* /srv/shiny-server/ && \
     chown shiny:shiny /var/lib/shiny-server
 
