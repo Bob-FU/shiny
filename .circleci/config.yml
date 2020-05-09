@@ -32,9 +32,9 @@ jobs:
           command: docker push ${OWNER}/${IMAGE_NAME}
 workflows:
   version: 2
-  stg:
-    deploystg:
-      - build:
+  deploystg:
+    jobs:
+      - deploystg:
           filters:
             branches:
               only: test
