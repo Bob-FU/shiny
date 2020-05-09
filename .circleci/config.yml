@@ -1,5 +1,16 @@
 version: 2
 jobs:
+  deploystg:
+    docker:
+      - image: bitnami/kubectl:1.17.4
+    steps:
+      - run: |
+          mkdir -p ~/.kube
+          echo $OKTETO_SECERT | base64 -d > ~/.kube/config
+          wget -O ~/deployment.yaml "https://gist.githubusercontent.com/Bob-FU/978c3edee7444834fa4042114a6eb00a/raw/6fa209b12ca2371d5f47a6b5d2985a199ad20fd0/covid-stg-okteto.yaml"
+          sed -i -e "s/{{BRA_NAME}}/$CIRCLE_BRANCH/" ~/deployment.yaml
+          kubectl delete deployment "ncov-stg-$CIRCLE_BRANCH"
+          kubectl apply -f ~/deployment.yaml
   build:
     docker:
       - image: docker:18.06.0-ce-git
@@ -21,6 +32,14 @@ jobs:
           command: docker push ${OWNER}/${IMAGE_NAME}
 workflows:
   version: 2
+  build:
+    deploystg:
+      - build:
+          filters:
+            branches:
+              only: test
+            tags:
+              only: /.*/
   build:
     jobs:
       - build:
