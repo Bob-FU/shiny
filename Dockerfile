@@ -40,6 +40,7 @@ RUN wget --no-verbose https://download3.rstudio.org/ubuntu-14.04/x86_64/VERSION 
     R -e "install.packages('sparkline')" &&\
     R -e "install.packages('shinyBS')" &&\
     R -e "install.packages('forcats')" &&\
+    R -e "remotes::install_github('JohnCoene/countup')"  &&\
     cp -R /usr/local/lib/R/site-library/shiny/examples/* /srv/shiny-server/ && \
     chown shiny:shiny /var/lib/shiny-server
 
