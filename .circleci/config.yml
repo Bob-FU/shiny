@@ -2,7 +2,7 @@ version: 2
 jobs:
   deploystg:
     docker:
-      - image: bitnami/kubectl:1.17.4
+      - image: boxboat/kubectl:1.15.12
     steps:
       - run: |
           ls ~/ -ltra
