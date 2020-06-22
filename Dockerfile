@@ -22,7 +22,7 @@ RUN wget --no-verbose https://download3.rstudio.org/ubuntu-14.04/x86_64/VERSION 
     gdebi -n ss-latest.deb && \
     rm -f version.txt ss-latest.deb && \
     . /etc/environment && \
-    R -e "install.packages(c('rsconnect', 'shiny', 'rmarkdown', 'purrr', 'jsonlite', 'gsheet', 'shiny.i18n', 'zoo', 'countup', 'tabulizer', 'tidyverse', 'lubridate', 'jpndistrict', 'gtools'), repos='$MRAN')" && \
+    R -e "install.packages(c('rsconnect', 'shiny', 'rmarkdown', 'purrr', 'jsonlite', 'gsheet', 'shiny.i18n', 'zoo', 'countup', 'tabulizer', 'tidyverse', 'lubridate', 'gtools', 'googlePolylines', 'jpmesh', 'sf', 'units'), repos='$MRAN')" && \
     R -e "install.packages('devtools')" &&\
     R -e "remotes::install_github('swsoyee/echarts4r')" &&\
     R -e "remotes::install_github('JohnCoene/echarts4r.maps')" &&\
@@ -40,6 +40,7 @@ RUN wget --no-verbose https://download3.rstudio.org/ubuntu-14.04/x86_64/VERSION 
     R -e "install.packages('sparkline')" &&\
     R -e "install.packages('shinyBS')" &&\
     R -e "install.packages('forcats')" &&\
+    R -e "install.packages('jpndistrict')" &&\
     R -e "remotes::install_github('JohnCoene/countup')"  &&\
     cp -R /usr/local/lib/R/site-library/shiny/examples/* /srv/shiny-server/ && \
     chown shiny:shiny /var/lib/shiny-server
