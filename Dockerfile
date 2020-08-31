@@ -1,4 +1,4 @@
-FROM rocker/r-ver:3.6.1
+FROM rocker/r-ver:3.6.3
 RUN apt-get update -qq &&\
     apt-get install -y gnupg wget locales locales-all libudunits2-dev gdal-bin proj-bin libgdal-dev libproj-dev &&\
     apt-key adv --keyserver keys.gnupg.net --recv-key 'E19F5F87128899B192B1A2C2AD5F960A256A04AF' &&\
