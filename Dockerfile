@@ -12,7 +12,7 @@ RUN apt-get update -qq &&\
     libcairo2-dev \
     libxt-dev \
     xtail \
-    wget libxml2-dev r-base  libssl-dev
+    wget libxml2-dev libssl-dev
 
 
 # Download and install shiny server
