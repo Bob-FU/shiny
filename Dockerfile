@@ -24,9 +24,6 @@ RUN wget --no-verbose https://download3.rstudio.org/ubuntu-14.04/x86_64/VERSION 
     . /etc/environment && \
     R -e "install.packages(c('rsconnect', 'shiny', 'rmarkdown', 'purrr', 'jsonlite', 'gsheet', 'shiny.i18n', 'zoo', 'countup', 'tabulizer', 'tidyverse', 'lubridate', 'gtools', 'googlePolylines', 'jpmesh', 'sf', 'units'), repos='$MRAN')" && \
     R -e "install.packages('devtools')" &&\
-    R -e "remotes::install_github('JohnCoene/echarts4r')" &&\
-    R -e "remotes::install_github('JohnCoene/echarts4r.maps')" &&\
-    R -e "remotes::install_github('RinteRface/shinydashboardPlus')" &&\
     R -e "install.packages('shinydashboard')" &&\
     R -e "install.packages('data.table')" &&\
     R -e "install.packages('DT')" &&\
@@ -44,6 +41,10 @@ RUN wget --no-verbose https://download3.rstudio.org/ubuntu-14.04/x86_64/VERSION 
     R -e "install.packages('incidence')" &&\
     R -e "install.packages('EpiEstim')" &&\
     R -e "install.packages('renv')" &&\
+    R -e "remotes::install_github("JohnCoene/echarts4r")" &&\
+    R -e "remotes::install_github('JohnCoene/echarts4r.maps')" &&\
+    R -e "remotes::install_github('RinteRface/shinydashboardPlus')" &&\
+    R -e "remotes::install_github('RinteRface/bs4Dash')" &&\
     R -e "remotes::install_github('JohnCoene/countup')"  &&\
     cp -R /usr/local/lib/R/site-library/shiny/examples/* /srv/shiny-server/ && \
     chown shiny:shiny /var/lib/shiny-server
