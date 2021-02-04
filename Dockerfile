@@ -41,7 +41,7 @@ RUN wget --no-verbose https://download3.rstudio.org/ubuntu-14.04/x86_64/VERSION 
     R -e "install.packages('incidence')" &&\
     R -e "install.packages('EpiEstim')" &&\
     R -e "install.packages('renv')" &&\
-    R -e "install.packages('bslib')" &&\
+    R -e "install.packages('bslib', repos='https://cloud.r-project.org')" &&\
     R -e "remotes::install_github('JohnCoene/echarts4r')" &&\
     R -e "remotes::install_github('JohnCoene/echarts4r.maps')" &&\
     R -e "remotes::install_github('RinteRface/shinydashboardPlus')" &&\
