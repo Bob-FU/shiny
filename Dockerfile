@@ -29,7 +29,6 @@ RUN wget --no-verbose https://download3.rstudio.org/ubuntu-14.04/x86_64/VERSION 
     R -e "install.packages('DT')" &&\
     R -e "install.packages('ggplot2')" &&\
     R -e "install.packages('shinycssloaders')" &&\
-    R -e "remotes::install_github(repo = 'dreamRs/shinyWidgets', ref = '4937454d8fbc5d51cb4d72bf2908f457d3ee16ef')" &&\
     R -e "install.packages('leaflet')" &&\
     R -e "install.packages('rjson')" &&\
     R -e "install.packages('htmltools')" &&\
@@ -46,6 +45,7 @@ RUN wget --no-verbose https://download3.rstudio.org/ubuntu-14.04/x86_64/VERSION 
     R -e "remotes::install_github('JohnCoene/echarts4r.maps')" &&\
     R -e "remotes::install_github('RinteRface/shinydashboardPlus')" &&\
     R -e "remotes::install_github('RinteRface/bs4Dash')" &&\
+    R -e "remotes::install_github('dreamRs/shinyWidgets', ref = '4937454d8fbc5d51cb4d72bf2908f457d3ee16ef')" &&\
     R -e "remotes::install_github('JohnCoene/countup')"  &&\
     cp -R /usr/local/lib/R/site-library/shiny/examples/* /srv/shiny-server/ && \
     chown shiny:shiny /var/lib/shiny-server
