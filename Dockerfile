@@ -29,7 +29,7 @@ RUN wget --no-verbose https://download3.rstudio.org/ubuntu-14.04/x86_64/VERSION 
     R -e "install.packages('DT')" &&\
     R -e "install.packages('ggplot2')" &&\
     R -e "install.packages('shinycssloaders')" &&\
-    R -e "install.packages('shinyWidgets')" &&\
+    R -e "remotes::install_github(repo = 'dreamRs/shinyWidgets', ref = '4937454d8fbc5d51cb4d72bf2908f457d3ee16ef')" &&\
     R -e "install.packages('leaflet')" &&\
     R -e "install.packages('rjson')" &&\
     R -e "install.packages('htmltools')" &&\
